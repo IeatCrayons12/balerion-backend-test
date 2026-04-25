@@ -59,6 +59,11 @@ func convertGroup(n int64) string {
 			parts = append(parts, "สิบ")
 			continue
 		}
+		// Special case: "ยี่สิบ" for 2 in tens place (not "สองสิบ")
+		if p == 1 && d == 2 {
+			parts = append(parts, "ยี่สิบ")
+			continue
+		}
 		// Special case: "เอ็ด" for 1 in tens place (11, 21, 31…)
 		if p == 0 && d == 1 && n > 10 {
 			parts = append(parts, "เอ็ด")
